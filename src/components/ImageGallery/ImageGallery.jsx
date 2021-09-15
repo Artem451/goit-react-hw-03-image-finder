@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { toast } from 'react-toastify';
 import Loader from 'react-loader-spinner';
 import apiService from '../../apiService/apiService';
 import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
@@ -34,23 +35,19 @@ class ImageGallery extends Component {
   }
 
   async loadImages() {
-    await apiService(this.props.searchRequest, this.state.page)
-      .then(images =>
-        this.setState({ images: images.hits, status: 'resolved' }),
-      )
-      .catch(error => this.setState({ error, status: 'reject' }));
+    await apiService(this.props.searchRequest, this.state.page).then(images =>
+      this.setState({ images: images.hits, status: 'resolved' }),
+    );
     this.autoScroll();
   }
 
   async loadMoreImages() {
-    await apiService(this.props.searchRequest, this.state.page)
-      .then(images => {
-        this.setState(prevState => ({
-          images: [...prevState.images, ...images.hits],
-          status: 'resolved',
-        }));
-      })
-      .catch(error => this.setState({ error, status: 'reject' }));
+    await apiService(this.props.searchRequest, this.state.page).then(images => {
+      this.setState(prevState => ({
+        images: [...prevState.images, ...images.hits],
+        status: 'resolved',
+      }));
+    });
     this.autoScroll();
   }
 

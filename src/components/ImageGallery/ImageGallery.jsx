@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { toast } from 'react-toastify';
 import Loader from 'react-loader-spinner';
 import apiService from '../../apiService/apiService';
 import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';

@@ -26,7 +26,7 @@ class ImageGallery extends Component {
       this.setState({ images: [], page: 1, status: 'pending' });
       setTimeout(() => {
         this.loadImages();
-      }, 100);
+      }, 200);
     }
 
     if (prevPage !== nextPage) {
